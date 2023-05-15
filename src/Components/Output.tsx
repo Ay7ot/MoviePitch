@@ -21,10 +21,10 @@ export default function Output() {
                         })
                     }}
                 >
-                    Hide movie pitch
+                    Hide pitch
                 </button>
                 <button 
-                    className="mt-4 p-4 mb-4 rounded-lg font-bold text-white tracking-wide text-xl"
+                    className="p-4 mb-4 rounded-lg font-bold text-white tracking-wide text-xl"
                     onClick={()=>{
                         dispatch({
                             type: 'setShowPitchButton',
@@ -37,7 +37,7 @@ export default function Output() {
                         })
                     }}
                 >
-                    New movie pitch
+                    New pitch
                 </button>
             </div>
         </section>
