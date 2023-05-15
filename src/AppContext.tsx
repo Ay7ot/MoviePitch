@@ -4,9 +4,14 @@ import { appReducer } from "./reducer";
 import { useAuth } from "./useAuth";
 
 export const AppContext = createContext<AppContextInterface>({
-    theme: 'light',
     dispatch: () => {return},
-    prompt: ''
+    prompt: '',
+    synopsis: '',
+    actors: '',
+    title: '',
+    imageDescription: '',
+    imageUrl: '',
+    viewPitch: false
 })
 
 export function AppProvider({children}: {children: ReactNode}){

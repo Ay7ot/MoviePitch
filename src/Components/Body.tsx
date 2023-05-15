@@ -5,7 +5,7 @@ import Home from "./Home";
 
 export default function Body() {
   return (
-    <main className="grid place-content-center h-[90.1vh]">
+    <main className="grid place-content-center min-h-[90.1vh]">
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/library" element={<Library />} />

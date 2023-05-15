@@ -1,4 +1,4 @@
-import {IoLibrarySharp, IoHomeSharp} from 'react-icons/io5'
+import {IoLibrarySharp } from 'react-icons/io5'
 import {HiHomeModern} from 'react-icons/hi2'
 import {Link} from 'react-router-dom'
 
