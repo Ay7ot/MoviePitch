@@ -54,7 +54,7 @@ export default function Setup() {
     async function getSynopsis(text: string){
 
         setLoading(true)
-        const movieSynopsisPrompt = `Generate an engaging, professional and marketable movie synopsis based on an outline
+        const movieSynopsisPrompt = `Generate an engaging, professional and marketable movie synopsis based on an outline. Add actors to play the characters
         ###
         outline: A big-headed daredevil fighter pilot goes back to school only to be sent on a deadly mission.
         synopsis: The Top Gun Naval Fighter Weapons School is where the best of the best train to refine their elite flying skills. When hotshot fighter pilot Maverick (Tom Cruise) is sent to the school, his reckless attitude and cocky demeanor put him at odds with the other pilots, especially the cool and collected Iceman (Val Kilmer). But Maverick isn't only competing to be the top fighter pilot, he's also fighting for the attention of his beautiful flight instructor, Charlotte Blackwood (Kelly McGillis). Maverick gradually earns the respect of his instructors and peers - and also the love of Charlotte, but struggles to balance his personal and professional life. As the pilots prepare for a mission against a foreign enemy, Maverick must confront his own demons and overcome the tragedies rooted deep in his past to become the best fighter pilot and return from the mission triumphant.
