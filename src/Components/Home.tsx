@@ -4,7 +4,8 @@ import Setup from "./Setup";
 
 export default function Home() {
 
-    const {viewPitch} = useAuth()
+    const { viewPitch } = useAuth()
+    
     return (
         <div className='p-4 pb-14'>
             {viewPitch ? <Output /> : <Setup />}

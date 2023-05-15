@@ -7,10 +7,10 @@ export default function Body() {
   return (
     <main className="grid place-content-center min-h-[90.1vh]">
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/library" element={<Library />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/library" element={<Library />} />
         </Routes>
-      <Footer />
+        <Footer />
     </main>
   )
 }

@@ -12,7 +12,7 @@ export default function Setup() {
     const [showPitchButton, setShowPitchButton] = useState(false)
 
     async function getMoviePrompt(text: string){
-        setMovieBossText('. . .')
+        setMovieBossText('. . . .')
         
         const moviePrompt = `
             In under 35 words, generate a statement that says you would need a while to think about the ${text} you received. Sound interested in the text and mention one aspect of the text
@@ -130,6 +130,7 @@ export default function Setup() {
     }
 
     function inputAndPitch(){
+
         if(showPitchButton){
             return (
                 <div className="grid place-content-center">

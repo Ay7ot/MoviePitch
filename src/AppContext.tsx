@@ -4,7 +4,7 @@ import { appReducer } from "./reducer";
 import { useAuth } from "./useAuth";
 
 export const AppContext = createContext<AppContextInterface>({
-    dispatch: () => {return},
+    dispatch: () => { return },
     prompt: '',
     synopsis: '',
     actors: '',
