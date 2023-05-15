@@ -18,7 +18,19 @@ export default function Setup() {
         })
 
         const moviePrompt = `
-            In under 35 words, generate a statement that says you would need a while to think about the ${text} you received. Sound interested in the text and mention one aspect of the text
+        Generate a short message to enthusiastically say an outline sounds interesting and that you need some minutes to think about it.
+        ###
+        outline: Two dogs fall in love and move to Hawaii to learn to surf.
+        message: I'll need to think about that. But your idea is amazing! I love the bit about Hawaii!
+        ###
+        outline: A plane crashes in the jungle and the passengers have to walk 1000km to safety.
+        message: I'll spend a few moments considering that. But I love your idea!! A disaster movie in the jungle!
+        ###
+        outline: A group of corrupt lawyers try to send an innocent woman to jail.
+        message: Wow that is awesome! Corrupt lawyers, huh? Give me a few moments to think!
+        ###
+        outline: ${text}
+        message:
         `
         const response = await fetchText(50, moviePrompt)
         if(response){
@@ -42,15 +54,12 @@ export default function Setup() {
     async function getSynopsis(text: string){
 
         setLoading(true)
-        const movieSynopsisPrompt = `Generate an engaging, professional and marketable movie synopsis based on the following idea: ${text}
-        Add actors to play the characters 
-    
+        const movieSynopsisPrompt = `Generate an engaging, professional and marketable movie synopsis based on an outline
         ###
-        userTitle: A big-headed daredevil fighter pilot goes back to school only to be sent on a deadly mission.
+        outline: A big-headed daredevil fighter pilot goes back to school only to be sent on a deadly mission.
         synopsis: The Top Gun Naval Fighter Weapons School is where the best of the best train to refine their elite flying skills. When hotshot fighter pilot Maverick (Tom Cruise) is sent to the school, his reckless attitude and cocky demeanor put him at odds with the other pilots, especially the cool and collected Iceman (Val Kilmer). But Maverick isn't only competing to be the top fighter pilot, he's also fighting for the attention of his beautiful flight instructor, Charlotte Blackwood (Kelly McGillis). Maverick gradually earns the respect of his instructors and peers - and also the love of Charlotte, but struggles to balance his personal and professional life. As the pilots prepare for a mission against a foreign enemy, Maverick must confront his own demons and overcome the tragedies rooted deep in his past to become the best fighter pilot and return from the mission triumphant.
-        
         ###
-        userTitle: ${text}
+        outline: ${text}
         synopsis: 
         `
         const response = await fetchText(700, movieSynopsisPrompt)
@@ -110,11 +119,11 @@ export default function Setup() {
         ###
         title: zero Earth
         synopsis: When bodyguard Kob (Daniel Radcliffe) is recruited by the United Nations to save planet Earth from the sinister Simm (John Malkovich), an alien lord with a plan to take over the world, he reluctantly accepts the challenge. With the help of his loyal sidekick, a brave and resourceful hamster named Gizmo (Gaten Matarazzo), Kob embarks on a perilous mission to destroy Simm. Along the way, he discovers a newfound courage and strength as he battles Simm's merciless forces. With the fate of the world in his hands, Kob must find a way to defeat the alien lord and save the planet.
-        image-description: A tired and bloodied bodyguard and hamster standing atop a tall skyscraper, looking out over a vibrant cityscape, with a rainbow in the sky above them.
+        image description: A tired and bloodied bodyguard and hamster standing atop a tall skyscraper, looking out over a vibrant cityscape, with a rainbow in the sky above them.
         ###
         title: ${title}
         synopsis: ${synopsis}
-        image-description: 
+        image description: 
         `
         const response = await fetchText(100, imagePrompt)
         
@@ -133,7 +142,7 @@ export default function Setup() {
     async function getImageUrl(text: string){
 
         const imageGenerativePrompt = `
-            Generate  movie poster based on the ${text} description. Don't add any text to the image
+        ${text}. There should be no text in this image.
         `
         const response = await fetchImage(imageGenerativePrompt)
 
