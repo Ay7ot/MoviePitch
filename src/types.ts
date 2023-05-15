@@ -6,7 +6,9 @@ export interface AppContextInterface {
     title: string,
     imageDescription: string,
     imageUrl: string,
-    viewPitch: boolean
+    viewPitch: boolean,
+    showPitchButton: boolean,
+    movieBossText: string
 }
 
 export type AppActionInterface = {
@@ -18,5 +20,7 @@ export type AppActionInterface = {
         titlePayload?: string;
         imageDescriptionPayload?: string;
         imageUrlPayload?: string;
+        movieBossTextPayload?: string;
+        showPitchButtonPayload?: boolean;
     }
 }

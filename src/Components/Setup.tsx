@@ -4,23 +4,33 @@ import { fetchImage, fetchText } from "../openai"
 
 export default function Setup() {
 
-    const { prompt, dispatch, synopsis, title } = useAuth()
-    const [movieBossText, setMovieBossText] = useState(
-        `Give me a one-sentence concept and I'll give you an eye-catching title, a synopsis the studios will love, a movie poster...AND choose the cast!`
-    )
+    const { prompt, dispatch, synopsis, title, movieBossText, showPitchButton } = useAuth()
+
     const[loading, setLoading] = useState(false);
-    const [showPitchButton, setShowPitchButton] = useState(false)
 
     async function getMoviePrompt(text: string){
-        setMovieBossText('. . . .')
         
+        dispatch({
+            type: 'setMovieBossText',
+            payload: {
+                movieBossTextPayload: '. . . . . . '
+            }
+        })
+
         const moviePrompt = `
             In under 35 words, generate a statement that says you would need a while to think about the ${text} you received. Sound interested in the text and mention one aspect of the text
         `
         const response = await fetchText(50, moviePrompt)
         if(response){
-            setMovieBossText(response)
+
+            dispatch({
+                type: 'setMovieBossText',
+                payload: {
+                    movieBossTextPayload: response
+                }
+            })
         }
+
         dispatch({
             type: 'setPrompt',
             payload: {
@@ -30,6 +40,7 @@ export default function Setup() {
     }
 
     async function getSynopsis(text: string){
+
         setLoading(true)
         const movieSynopsisPrompt = `Generate an engaging, professional and marketable movie synopsis based on the following idea: ${text}
         Add actors to play the characters 
@@ -43,6 +54,7 @@ export default function Setup() {
         synopsis: 
         `
         const response = await fetchText(700, movieSynopsisPrompt)
+        
         dispatch({
             type: 'setSynopsis',
             payload: {
@@ -57,12 +69,14 @@ export default function Setup() {
     }
 
     async function getActors(text: string){
+
         const actorsPrompt = `
             Extract the list of actors from ${text} which are in the brackets
 
             return it in the format of only the actors names separated by a comma
         `
         const response = await fetchText(150, actorsPrompt)
+        
         dispatch({
             type: 'setActors',
             payload: {
@@ -72,10 +86,12 @@ export default function Setup() {
     }
 
     async function getTitle(text: string){
+
         const titlePrompt = `
             Generate a title of not more than 10 words for the following movie synopsis. ${text}. Don't add quotation marks to the title
         `
         const response = await  fetchText(25, titlePrompt, 0.7)
+       
         dispatch({
             type: 'setTitle',
             payload: {
@@ -85,6 +101,7 @@ export default function Setup() {
     }
 
     async function getImagePrompt(){
+
         const imagePrompt = `Give a short description of an image which could be used to advertise a movie based on a title and synopsis. The description should be rich in visual detail but contain no names.
         ###
         title: Love's Time Warp
@@ -99,20 +116,22 @@ export default function Setup() {
         synopsis: ${synopsis}
         image-description: 
         `
-
         const response = await fetchText(100, imagePrompt)
+        
         dispatch({
             type: 'setImageDescription',
             payload: {
                 imageDescriptionPayload: response
             }
         })
+        
         if(response){
             getImageUrl(response)
         }
     }
 
     async function getImageUrl(text: string){
+
         const imageGenerativePrompt = `
             Generate  movie poster based on the ${text} description. Don't add any text to the image
         `
@@ -124,12 +143,25 @@ export default function Setup() {
                 imageUrlPayload: response
             }
         })
-        setMovieBossText(`This idea is so good I'm jealous! It's gonna make you rich for sure! Remember, I want 10% 💰`)
+        
+        dispatch({
+            type: 'setMovieBossText',
+            payload: {
+                movieBossTextPayload: `This idea is so good I'm jealous! It's gonna make you rich for sure! Remember, I want 10% 💰`
+            }
+        })
+       
         setLoading(false)
-        setShowPitchButton(true)
+       
+        dispatch({
+            type: 'setShowPitchButton',
+            payload: {
+                showPitchButtonPayload: true
+            }
+        })
     }
 
-    function inputAndPitch(){
+    function InputAndPitch(){
 
         if(showPitchButton){
             return (
@@ -190,7 +222,7 @@ export default function Setup() {
                 <img src="loading.svg"/>
             </div>
             : 
-            inputAndPitch()
+            InputAndPitch()
             }
         </section>
     )

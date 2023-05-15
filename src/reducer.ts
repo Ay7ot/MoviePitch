@@ -42,6 +42,16 @@ export const appReducer = (state: AppContextInterface, action: AppActionInterfac
                 ...state,
                 viewPitch: false
             }
+        case 'setMovieBossText':
+            return {
+                ...state,
+                movieBossText: action.payload?.movieBossTextPayload ?? ''
+            }
+        case 'setShowPitchButton':
+            return {
+                ...state,
+                showPitchButton: action.payload?.showPitchButtonPayload ?? false
+            }
         default:
             return state;
     }

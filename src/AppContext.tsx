@@ -11,7 +11,9 @@ export const AppContext = createContext<AppContextInterface>({
     title: '',
     imageDescription: '',
     imageUrl: '',
-    viewPitch: false
+    viewPitch: false,
+    showPitchButton: false,
+    movieBossText: `Give me a one-sentence concept and I'll give you an eye-catching title, a synopsis the studios will love, a movie poster...AND choose the cast!`
 })
 
 export function AppProvider({children}: {children: ReactNode}){
