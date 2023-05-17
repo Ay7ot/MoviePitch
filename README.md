@@ -24,13 +24,11 @@ Open your browser and visit http://localhost:5173 to access the web app.
 Enter a sentence or phrase in the input field.
 Click the "send" button.
 The application will retrieve movie information based on your input and display the movie title, synopsis, actors, and a poster related to your input.
-Contributing
+
+##Contributing
 Contributions are welcome! If you have any suggestions or improvements, please create an issue or submit a pull request.
 
-License
-This project is licensed under the MIT License.
-
-Acknowledgements
-React
-Vite
-OpenAI
+## Acknowledgements
+- React
+- Vite
+- OpenAI
