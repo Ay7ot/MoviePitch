@@ -5,6 +5,7 @@ This web application utilizes the OpenAI API to provide users with movie suggest
 - React
 - Vite
 - OpenAI API
+- Typescript
 
 ## Installation
 
